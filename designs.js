@@ -1,5 +1,4 @@
 // variables;
-let pixelCanvas;
 let clicked;
 
 // load jquery
@@ -20,6 +19,7 @@ function onLoad() {
 // functions
 function makeGrid(event) {
     event.preventDefault();
+    $('#pixelCanvas').empty();
     let height = $('#inputHeight').val();
     let width = $('#inputWeight').val();
     console.log(height, width);
