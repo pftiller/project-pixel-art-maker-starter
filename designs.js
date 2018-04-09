@@ -1,4 +1,4 @@
-let color = $('#colorPicker').val();
+let color;
 let pixelCanvas;
 let tbody;
 let $new;
@@ -8,20 +8,24 @@ $(document).ready(onLoad);
 
 function onLoad() {
     console.log('JQ loaded');
+    updateColor();
     //event listeners
     $('input:submit').on('click', makeGrid);
+    $('#colorPicker').on('change', updateColor)
     $('#pixelCanvas').delegate('td','click',function(){
         $(this).toggleClass('selected');
      }); 
 
-     console.log(color);
 }
 
 // Select size input
 
 
 // When size is submitted by the user, call makeGrid()
-
+function updateColor() {
+    color = $('#colorPicker').val();
+    console.log('updateColor resulted in this new color', color);
+}
 function makeGrid(event) {
     event.preventDefault();
     let height = $('#inputHeight').val();
