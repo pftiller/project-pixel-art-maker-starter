@@ -1,22 +1,36 @@
+let color = $('#colorPicker').val();
+let pixelCanvas;
+let tbody;
+let $new;
+
 // Select color input
-var color = $('#colorPicker').val();
+$(document).ready(onLoad);
+
+function onLoad() {
+    console.log('JQ loaded');
+    //event listeners
+    $('input:submit').on('click', makeGrid);
+    $('#pixelCanvas').delegate('td','click',function(){
+        $(this).toggleClass('selected');
+     }); 
+
+     console.log(color);
+}
 
 // Select size input
-var height = $('#inputHeight').val();
 
-var width = $('#inputWeight').val();
 
 // When size is submitted by the user, call makeGrid()
 
-
-
-
-
-
-
-
-function makeGrid() {
-
-// Your code goes here!
-
+function makeGrid(event) {
+    event.preventDefault();
+    let height = $('#inputHeight').val();
+    let width = $('#inputWeight').val();
+    console.log(height, width);
+    for(let i = 0; i < height; ++i) {
+        $('#pixelCanvas').append('<tr id="' + [i] + '">');
+        for(let j = 0; j < width; ++j) {
+            $('#' + [i]).append('<td></td>');
+        }
+    }
 }
